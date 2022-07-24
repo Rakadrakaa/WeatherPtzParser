@@ -19,6 +19,8 @@ temp = temp.text
 date = date.text
 time = time.text
 
+send_tg = title_dis + temp + date + time  # Для бота
+
 print(
     f'Район {title_dis}',
     f'Текущая температура {temp} градусов по Цельсию',
