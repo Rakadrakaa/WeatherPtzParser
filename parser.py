@@ -1,8 +1,7 @@
-from operator import delitem    # TODO: Прикрутить телеграмм бота
-from os import sep
+# TODO: Прикрутить телеграмм бота
 from bs4 import BeautifulSoup
 import requests
-import csv
+
 
 url = 'http://pogoda-karelia.ru/'
 response = requests.get(url)
