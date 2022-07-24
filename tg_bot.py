@@ -1,7 +1,7 @@
 import telebot
 from parser import send_tg
 
-bot = telebot.TeleBot('5449903974:AAH6E3-sgSSDVlw49eUA3W0zhbYUkiTGiXQ')
+bot = telebot.TeleBot('TOKEN')
 
 
 @bot.message_handler(commands=['start', 'help'])
