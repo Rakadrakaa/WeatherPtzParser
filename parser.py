@@ -6,10 +6,12 @@ response = requests.get(url)
 
 bs = BeautifulSoup(response.text, 'lxml')
 
-title_dis = bs.find('h4', class_="title")  # Получение названия района
+
+title_dis = bs.find('h4', class_='title')  # Получение названия района
 temp = bs.find('span', class_="t-value")  # Получение температуры
 date = bs.find('h5', class_="date")  # Получение даты
 time = bs.find('h5', class_="time")  # Получение времени
+
 
 print(
     f'Район {title_dis.text}',
