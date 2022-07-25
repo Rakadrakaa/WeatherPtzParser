@@ -30,7 +30,6 @@ with open("weather.csv", mode="a", encoding='utf-8') as w_file:
     headers = ["Район", "Температура", "Дата", "Время"]
     file_writer = csv.DictWriter(w_file, delimiter=",",
                                  lineterminator="\r", fieldnames=headers)
-    file_writer.writeheader()
     file_writer.writerow(
         {'Район': title_dis, 'Температура': temp, 'Дата': date, 'Время': time})
 
