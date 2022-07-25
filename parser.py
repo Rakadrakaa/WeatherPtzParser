@@ -1,6 +1,7 @@
 # TODO: Прикрутить телеграмм бота
 from bs4 import BeautifulSoup
 import requests
+import csv
 
 
 url = 'http://pogoda-karelia.ru/'
@@ -19,25 +20,19 @@ temp = temp.text
 date = date.text
 time = time.text
 
-send_tg = title_dis + temp + date + time  # Для бота
-
 print(
     f'Район {title_dis}',
     f'Текущая температура {temp} градусов по Цельсию',
     f'Дата {date} г.',
     f'Время {time}', sep='\n')
 
-file = ('weather_data.txt')
+with open("weather.csv", mode="a", encoding='utf-8') as w_file:
+    headers = ["Район", "Температура", "Дата", "Время"]
+    file_writer = csv.DictWriter(w_file, delimiter=",",
+                                 lineterminator="\r", fieldnames=headers)
+    file_writer.writeheader()
+    file_writer.writerow(
+        {'Район': title_dis, 'Температура': temp, 'Дата': date, 'Время': time})
 
-# Пиздец уебищный способ записи конечно, но я пока по другому не умею.
-with open(file, 'a', encoding='utf-8') as f:
-    f.write(title_dis)
-    f.write('\n')
-    f.write(temp)
-    f.write('\n')
-    f.write(date)
-    f.write('\n')
-    f.write(time)
-    f.write('\n')
-    f.write('-' * 10)
-    f.write('\n')
+
+file_writer = csv.writer(w_file, delimiter="\t")
