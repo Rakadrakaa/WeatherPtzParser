@@ -16,10 +16,9 @@ temp = bs.find('span', class_="t-value").text  # Получение темпер
 date = bs.find('h5', class_="date").text  # Получение даты
 time = bs.find('h5', class_="time").text  # Получение времени
 
-tg_title = 'Район: ' + title_dis
-tg_temp = 'Температура: ' + temp
-tg_date = 'Дата: ' + date
-tg_time = 'Время: ' + time
+# Данные по погоде для бота
+tg_weather = 'Район: ' + title_dis + '\nТемпература: ' + \
+    temp + '\nДата: ' + date + '\nВремя: ' + time
 
 
 @bot.message_handler(commands=['start'])
@@ -30,10 +29,7 @@ def send_welcome(message):
 @bot.message_handler(content_types=['text'])
 def send_weather(message):
     bot.send_message(message.chat.id, "Погода на сейчас: ")
-    bot.send_message(message.chat.id, tg_title)
-    bot.send_message(message.chat.id, tg_temp)
-    bot.send_message(message.chat.id, tg_date)
-    bot.send_message(message.chat.id, tg_time)
+    bot.send_message(message.chat.id, tg_weather)
 
 
 if __name__ == '__main__':
